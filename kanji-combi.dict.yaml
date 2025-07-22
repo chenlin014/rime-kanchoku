@@ -3,7 +3,7 @@
 # japanese.jmdict.dict.yaml (The JMDict Project) <http://www.edrdg.org/jmdict/j_jmdict.html>
 # japanese.mozc.dict.yaml (Mozc) <https://github.com/google/mozc>
 ---
-name: jp-kan-combi
+name: kanji-combi
 version: 'v0.2'
 use_preset_vocabulary: false
 columns:
