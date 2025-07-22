@@ -1,0 +1,93 @@
+﻿# Rime schema
+# vim: set sw=2 sts=2 et:
+# encoding: utf-8
+
+schema:
+    schema_id: kanchoku
+    name: 漢直
+    version: "0.0"
+    author:
+        - 陳林 <1chen0bryan@gmail.com>
+    #dependencies:
+
+switches:
+  - name: ascii_mode
+    reset: 0
+    states: [ 日, A ]
+  - name: half_shape
+    states: [ 半角, 全角 ]
+    reset: 0
+  - name: hiragana
+    states: [ ひら, カタ ]
+    reset: 0
+
+engine:
+  processors:
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - punct_translator
+    - script_translator
+  filters:
+    - uniquifier
+
+menu:
+  page_size: 5
+
+speller:
+  alphabet: 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  delimiter: " '"
+  #max_code_length: 6
+  #auto_select: true
+  #auto_select_unique_candidate: true
+
+translator:
+  dictionary: kanchoku
+  strict_spelling: true
+  #max_phrase_length: 6
+
+punctuator:
+  import_preset: default
+  full_shape: &symbols
+    '.': {commit: 。 }
+    ',': {commit: 、 }
+    #'/': ・
+    '/': か
+    '\K': か
+    '=': [ ゝ, ゞ ]
+    '+': [ ヽ, ヾ ]
+  half_shape: *symbols
+
+key_binder:
+  import_preset: default
+  bindings:
+    - { when: has_menu, accept: minus, send: minus }
+    - { when: has_menu, accept: equal, send: equal }
+    - { when: paging, accept: comma, send: comma }
+    - { when: has_menu, accept: period, send: period }
+
+recognizer:
+  import_preset: default
+
+ascii_composer:
+  good_old_caps_lock: false
+  switch_key:
+    Caps_Lock: noop
+    Eisu_toggle: clear
+
+editor:
+  bindings:
+    Caps_Lock: confirm
+    Return: confirm
