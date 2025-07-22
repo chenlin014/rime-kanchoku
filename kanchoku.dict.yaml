@@ -6,6 +6,6 @@ name: kanchoku
 version: "0.0.0"
 use_preset_vocabulary: false
 import_tables:
-  - kana_test
+  - romaji_kana
   - kanji_test
 ...
