@@ -40,6 +40,7 @@ engine:
   translators:
     - punct_translator
     - script_translator
+    - table_translator@kanji
   filters:
     - uniquifier
     - simplifier@katakana
@@ -61,9 +62,12 @@ speller:
   #auto_select_unique_candidate: true
 
 translator:
-  dictionary: kanchoku
-  strict_spelling: true
-  #max_phrase_length: 6
+  dictionary: romaji-kana
+  initial_quality: 1
+
+kanji:
+  dictionary: cangjie5
+  initial_quality: 2
 
 punctuator:
   import_preset: default
