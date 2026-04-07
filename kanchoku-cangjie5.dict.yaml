@@ -1,0 +1,21 @@
+---
+name: kanchoku-cangjie5
+version: "0.0"
+sort: by_weight
+use_preset_vocabulary: false
+vocabulary: kanji-combi
+import_tables:
+  - cangjie5
+encoder:
+  exclude_patterns:
+    - '^x.*$'
+    - '^z.*$'
+  rules:
+    - length_equal: 2
+      formula: "AaAzBaBbBz"
+    - length_equal: 3
+      formula: "AaAzBaBzCz"
+    - length_in_range: [4, 10]
+      formula: "AaBzCaYzZz"
+  tail_anchor: "'"
+...
