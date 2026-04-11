@@ -20,6 +20,8 @@ switches:
   - name: katakana
     reset: 0
     states: [ ひらがな, カタカナ ]
+  - name: kanji_mode
+    states: [ 漢字, かな ]
 
 engine:
   processors:
@@ -57,9 +59,6 @@ menu:
 speller:
   alphabet: 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
   delimiter: " '"
-  #max_code_length: 6
-  #auto_select: true
-  #auto_select_unique_candidate: true
 
 translator:
   dictionary: romaji-kana
@@ -89,6 +88,7 @@ key_binder:
     - { when: paging, accept: comma, send: comma }
     - { when: has_menu, accept: period, send: period }
     - { when: has_menu, accept: Tab, toggle: katakana }
+    - { when: has_menu, accept: Return, toggle: kanji_mode }
 
 recognizer:
   import_preset: default
