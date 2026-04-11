@@ -21,10 +21,11 @@ switches:
     reset: 0
     states: [ ひらがな, カタカナ ]
   - name: kanji_mode
-    states: [ 漢字, かな ]
+    states: [ かな, 漢字 ]
 
 engine:
   processors:
+    - lua_processor@*kanchoku*proc@kanchoku_processor
     - ascii_composer
     - recognizer
     - key_binder
@@ -46,6 +47,7 @@ engine:
   filters:
     - uniquifier
     - simplifier@katakana
+    - lua_filter@*kanchoku*filter@kanchoku_filter
 
 katakana:
   opencc_config: katakana.json
@@ -57,7 +59,8 @@ menu:
   page_size: 5
 
 speller:
-  alphabet: 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  alphabet: zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA~`1234567890!@#$%^&*()-_+=[]{}\|:;"',.<>/?
+  initials: "zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA"
   delimiter: " '"
 
 translator:
@@ -88,7 +91,7 @@ key_binder:
     - { when: paging, accept: comma, send: comma }
     - { when: has_menu, accept: period, send: period }
     - { when: has_menu, accept: Tab, toggle: katakana }
-    - { when: has_menu, accept: Return, toggle: kanji_mode }
+    - { when: has_menu, accept: Escape, toggle: kanji_mode }
 
 recognizer:
   import_preset: default
