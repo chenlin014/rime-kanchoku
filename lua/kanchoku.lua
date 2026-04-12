@@ -111,11 +111,13 @@ end
 function F.func(input, env)
 	if env.engine.context:get_option('kanji_mode') then
 		for cand in input:iter() do
-			if not is_kanas(cand.text) then yield(cand) end
+			if not is_kanas(cand.text) or cand.type == "punct" then
+				yield(cand)
+			end
 		end
 	else
 		for cand in input:iter() do
-			if is_kanas(cand.text) then yield(cand) end
+			if is_kanas(cand.text) or cand.type == "punct" then yield(cand) end
 		end
 	end
 end
