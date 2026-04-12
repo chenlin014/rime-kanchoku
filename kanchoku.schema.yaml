@@ -42,8 +42,8 @@ engine:
     - fallback_segmentor
   translators:
     - punct_translator
-    - script_translator
-    - table_translator@kanji
+    - table_translator
+    - script_translator@kana
   filters:
     - uniquifier
     - simplifier@katakana
@@ -63,12 +63,10 @@ speller:
   initials: "zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA"
 
 translator:
-  dictionary: romaji-kana
-  initial_quality: 1
-
-kanji:
   dictionary: kanchoku-cangjie5
-  initial_quality: 2
+
+kana:
+  dictionary: romaji-kana
 
 punctuator:
   import_preset: default
