@@ -8,7 +8,7 @@
 
 ---
 name: hayashiki-kana
-version: "2026-04-10"
+version: "2026-04-12"
 sort: original
 use_preset_vocabulary: false
 ...
@@ -308,9 +308,9 @@ use_preset_vocabulary: false
 ぴゃ	io
 ぴゅ	i.
 ぴょ	il
-ぴゃん	po
-ぴゅん	p.
-ぴょん	pl
+ぴゃん	pi
+ぴゅん	p,
+ぴょん	pk
 ぴぇ	yo
 ぴゅう	y.
 ぴょう	yl

@@ -1,0 +1,19 @@
+---
+name: kanchoku-siyuan-wb
+version: "0.0"
+sort: by_weight
+use_preset_vocabulary: false
+vocabulary: kanji-combi
+import_tables:
+  - siyuan-wb
+encoder:
+  rules:
+    - length_equal: 2
+      formula: "AaAbAcBaBc"
+    - length_equal: 3
+      formula: "AaAcBaBcCa"
+    - length_equal: 4
+      formula: "AaAcBaCaDa"
+    - length_in_range: [5, 20]
+      formula: "AaBaCaDaEa"
+...
