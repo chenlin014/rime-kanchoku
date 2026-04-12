@@ -58,6 +58,7 @@ end
 
 function P.func(key, env)
 	local context = env.engine.context
+	local config = env.engine.schema.config
 	local key_repr = key:repr()
 	local commit_text = context:get_commit_text()
 
@@ -68,7 +69,10 @@ function P.func(key, env)
 		return K_NOOP
 	end
 
-	if key_repr == 'Alt_L' then
+	local kj_hr_key = config:get_string('commit_keys/kj_hr')
+	local kt_hr_key = config:get_string('commit_keys/kt_hr')
+
+	if key_repr == kj_hr_key then
 		if kanji then
 			context:set_option('kanji_mode', false)
 			context:set_option('katakana', false)
@@ -81,7 +85,7 @@ function P.func(key, env)
 		return K_ACCEPT
 	end
 
-	if key_repr == 'Alt_R' then
+	if key_repr == kt_hr_key then
 		if kanji then
 			context:set_option('kanji_mode', false)
 			context:set_option('katakana', true)

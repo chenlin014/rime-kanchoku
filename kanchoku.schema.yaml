@@ -92,6 +92,10 @@ key_binder:
     - { when: has_menu, accept: Tab, toggle: katakana }
     - { when: has_menu, accept: Escape, toggle: kanji_mode }
 
+commit_keys:
+  kj_hr: "Alt_L"
+  kt_hr: "Alt_R"
+
 recognizer:
   import_preset: default
 
