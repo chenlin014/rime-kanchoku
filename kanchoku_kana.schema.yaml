@@ -1,0 +1,9 @@
+schema:
+  schema_id: kanchoku_kana
+
+engine:
+  translators:
+    - script_translator
+
+translator:
+  dictionary: romaji-kana
